@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7A2E6E">
+<title>Notre charte – Mission sous-groupe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --prune: #7A2E6E;
+    --prune-fonce: #5A1F51;
+    --ciel: #7CC3E0;
+    --ciel-pale: #E3F2F9;
+    --encre: #1F2340;
+    --brume: #F3F6FA;
+    --soleil: #F2B33D;
+    --blanc: #FFFFFF;
+    --texte-doux: #4A4F6A;
+    --titre: "Bricolage Grotesque", "Trebuchet MS", "Segoe UI", sans-serif;
+    --corps: "Atkinson Hyperlegible", "Segoe UI", Roboto, Arial, sans-serif;
+    --barre: 88px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--corps);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--encre);
+    background: var(--brume);
+  }
+  body.avec-minuteur { padding-bottom: calc(var(--barre) + env(safe-area-inset-bottom, 0px) + 24px); }
+
+  /* ---------- En-tête ---------- */
+  .entete {
+    background: var(--prune);
+    color: var(--blanc);
+    padding: calc(28px + env(safe-area-inset-top, 0px)) 22px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .entete::after {
+    /* un sceau : la charte que l'on signe ensemble */
+    content: "";
+    position: absolute;
+    right: -62px; top: -40px;
+    width: 170px; height: 170px;
+    border-radius: 50%;
+    border: 14px solid rgba(124,195,224,.45);
+    box-shadow: inset 0 0 0 10px rgba(242,179,61,.35);
+    pointer-events: none;
+  }
+  .entete-interne { max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
+  .surtitre { font-size: .95rem; opacity: .85; margin: 0 0 6px; }
+  h1 {
+    font-family: var(--titre);
+    font-weight: 800;
+    font-size: clamp(2.3rem, 11vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -.02em;
+    margin: 0 0 14px;
+  }
+  .intro { margin: 0; max-width: 34ch; font-size: 1.05rem; }
+
+  main { max-width: 560px; margin: -40px auto 0; padding: 0 16px; position: relative; z-index: 2; }
+  [hidden] { display: none !important; }
+
+  /* ---------- Écran de choix ---------- */
+  .choix-titre {
+    background: var(--blanc);
+    border-radius: 22px 22px 0 0;
+    padding: 20px 20px 6px;
+    margin: 0;
+    font-family: var(--titre); font-weight: 700; font-size: 1.3rem;
+  }
+  .choix-aide { background: var(--blanc); margin: 0; padding: 0 20px 16px; color: var(--texte-doux); font-size: .98rem; }
+  .themes { list-style: none; margin: 0 0 20px; padding: 0 12px 14px; background: var(--blanc); border-radius: 0 0 22px 22px;
+    box-shadow: 0 10px 28px -14px rgba(90,31,81,.35); }
+  .theme-btn {
+    width: 100%;
+    display: flex; align-items: center; gap: 14px;
+    text-align: left;
+    font: inherit; color: inherit;
+    background: var(--brume);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .theme-btn:active { border-color: var(--prune); }
+  .theme-btn:focus-visible { outline: 3px solid var(--soleil); outline-offset: 2px; }
+  .numero {
+    flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--prune); color: var(--blanc);
+    font-family: var(--titre); font-weight: 800; font-size: 1.35rem;
+  }
+  .theme-nom { font-weight: 700; display: block; line-height: 1.25; }
+  .theme-sous { display: block; color: var(--texte-doux); font-size: .92rem; line-height: 1.3; }
+
+  /* ---------- Carte thème ---------- */
+  .carte {
+    background: var(--blanc);
+    border-radius: 22px;
+    padding: 22px 20px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 0 rgba(31,35,64,.06), 0 10px 28px -14px rgba(90,31,81,.35);
+  }
+  .carte.revelee { animation: retourner .55s cubic-bezier(.2,.8,.2,1) both; transform-origin: 50% 0; }
+  @keyframes retourner {
+    from { opacity: 0; transform: perspective(900px) rotateX(-65deg) translateY(-10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .carte-tete { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .carte-tete .numero { width: 54px; height: 54px; font-size: 1.6rem; }
+  .carte h2 { font-family: var(--titre); font-weight: 700; font-size: 1.5rem; line-height: 1.12; margin: 0; }
+  .carte h3 { font-family: var(--titre); font-weight: 700; font-size: 1.12rem; margin: 20px 0 8px; }
+  .carte p { margin: 0 0 10px; }
+  .enjeu { color: var(--texte-doux); }
+  .questions { margin: 0 0 6px; padding-left: 1.2em; }
+  .questions li { margin-bottom: 8px; }
+
+  .exemple {
+    display: grid; gap: 8px;
+    margin: 6px 0 4px;
+  }
+  .exemple div { border-radius: 12px; padding: 10px 14px; font-size: .98rem; }
+  .exemple .non { background: #FBEFEF; }
+  .exemple .oui { background: var(--ciel-pale); }
+  .exemple strong { display: block; font-size: .85rem; color: var(--texte-doux); font-weight: 700; }
+
+  .regles { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+  .regles label { display: block; font-size: .9rem; color: var(--texte-doux); margin-bottom: 4px; }
+  .regles textarea {
+    width: 100%; min-height: 64px; resize: vertical;
+    font: inherit; line-height: 1.4;
+    padding: 12px 14px;
+    border: 2px solid #D6DDE8;
+    border-radius: 12px;
+    background: var(--blanc);
+    color: var(--encre);
+  }
+  .regles textarea:focus { outline: none; border-color: var(--prune); }
+
+  .pleniere {
+    background: var(--brume);
+    border-left: 4px solid var(--ciel);
+    border-radius: 0 12px 12px 0;
+    padding: 12px 14px;
+    margin-top: 18px;
+  }
+  .pleniere p { margin: 0 0 6px; }
+  .pleniere p:last-child { margin: 0; }
+
+  .actions { display: grid; gap: 10px; margin: 18px 0 8px; }
+  .bouton {
+    font: inherit; font-weight: 700;
+    border: none; border-radius: 999px;
+    padding: 14px 24px; min-height: 50px;
+    cursor: pointer; touch-action: manipulation;
+  }
+  .bouton:focus-visible { outline: 3px solid var(--soleil); outline-offset: 3px; }
+  .bouton-principal { background: var(--prune); color: var(--blanc); }
+  .bouton-principal:active { background: var(--prune-fonce); }
+  .confirmation { text-align: center; color: var(--prune); font-weight: 700; min-height: 1.5em; margin: 0; }
+  .lien-discret {
+    background: none; border: none; color: var(--prune); font: inherit;
+    text-decoration: underline; cursor: pointer; padding: 10px; display: block; margin: 0 auto 20px;
+  }
+
+  /* ---------- Minuteur ---------- */
+  .minuteur {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    background: var(--encre); color: var(--blanc);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 10; transition: background-color .4s;
+  }
+  .minuteur.alerte { background: var(--soleil); color: var(--encre); }
+  .minuteur.fini { background: var(--prune); }
+  .progression {
+    position: absolute; top: 0; left: 0; height: 4px; width: 100%;
+    background: var(--ciel); transform-origin: left; transform: scaleX(1);
+  }
+  .minuteur.alerte .progression { background: var(--prune); }
+  .minuteur-interne { max-width: 560px; margin: 0 auto; display: flex; align-items: center; gap: 12px; min-height: 60px; }
+  .temps {
+    font-family: var(--titre); font-weight: 800; font-size: 2.2rem;
+    font-variant-numeric: tabular-nums; line-height: 1; min-width: 4.3ch;
+  }
+  .statut { flex: 1; font-size: .92rem; line-height: 1.3; }
+  .bouton-minuteur { background: var(--ciel); color: var(--encre); padding: 12px 18px; }
+  .minuteur.alerte .bouton-minuteur { background: var(--encre); color: var(--blanc); }
+  .bouton-raz { background: transparent; color: inherit; border: 2px solid currentColor; padding: 10px 12px; min-height: 46px; opacity: .8; }
+
+  .fin {
+    position: fixed; inset: 0; background: var(--prune); color: var(--blanc);
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: calc(32px + env(safe-area-inset-top, 0px)) 28px calc(32px + env(safe-area-inset-bottom, 0px));
+    z-index: 20;
+  }
+  .fin h2 { font-family: var(--titre); font-weight: 800; font-size: clamp(2.4rem, 12vw, 3.6rem); line-height: 1; margin: 0 0 16px; max-width: 9ch; }
+  .fin p { font-size: 1.15rem; max-width: 30ch; margin: 0 0 28px; }
+  .fin .bouton { background: var(--blanc); color: var(--prune); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carte.revelee { animation: none; }
+    .minuteur { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="entete">
+  <div class="entete-interne">
+    <p class="surtitre">Mastère Management des Organisations</p>
+    <h1>Notre charte</h1>
+    <p class="intro">Chaque groupe rédige une partie de la charte. Ensemble, nous la validerons et l'améliorerons.</p>
+  </div>
+</header>
+
+<main>
+  <!-- Écran 1 : choix du thème -->
+  <section id="ecran-choix">
+    <h2 class="choix-titre">Quel est votre numéro de groupe&nbsp;?</h2>
+    <p class="choix-aide">L'animateur vous a attribué un numéro. Touchez-le pour découvrir votre mission.</p>
+    <ul class="themes" id="liste-themes"></ul>
+  </section>
+
+  <!-- Écran 2 : mission du groupe -->
+  <section id="ecran-mission" hidden>
+    <article class="carte" id="carte-mission">
+      <div class="carte-tete">
+        <span class="numero" id="m-numero" aria-hidden="true">1</span>
+        <h2 id="m-titre">Titre</h2>
+      </div>
+      <p class="enjeu" id="m-enjeu"></p>
+
+      <h3>Pour lancer la discussion</h3>
+      <ul class="questions" id="m-questions"></ul>
+
+      <h3>Rédigez 2 ou 3 règles</h3>
+      <p>Chaque règle commence par «&nbsp;Nous&hellip;&nbsp;», décrit un comportement concret et peut s'appliquer dès aujourd'hui.</p>
+      <div class="exemple">
+        <div class="non"><strong>Trop vague</strong>«&nbsp;Être respectueux.&nbsp;»</div>
+        <div class="oui"><strong>Concret et observable</strong>«&nbsp;Nous laissons chacun terminer sa phrase avant de répondre.&nbsp;»</div>
+      </div>
+      <ul class="regles">
+        <li><label for="r1">Règle n°1</label><textarea id="r1" data-regle placeholder="Nous…"></textarea></li>
+        <li><label for="r2">Règle n°2</label><textarea id="r2" data-regle placeholder="Nous…"></textarea></li>
+        <li><label for="r3">Règle n°3 (facultative)</label><textarea id="r3" data-regle placeholder="Nous…"></textarea></li>
+      </ul>
+
+      <div class="pleniere">
+        <p><strong>En plénière</strong></p>
+        <p>Un porte-parole présente vos règles en 1 minute. Le groupe les valide ou propose des améliorations.</p>
+      </div>
+
+      <div class="actions">
+        <button class="bouton bouton-principal" id="copier" type="button">Copier nos règles</button>
+        <p class="confirmation" id="confirmation" aria-live="polite"></p>
+      </div>
+    </article>
+    <button class="lien-discret" id="changer" type="button">Ce n'est pas notre groupe&nbsp;: changer de thème</button>
+  </section>
+</main>
+
+<section class="minuteur" id="minuteur" aria-label="Minuteur" hidden>
+  <span class="progression" id="progression" aria-hidden="true"></span>
+  <div class="minuteur-interne">
+    <span class="temps" id="temps" role="timer" aria-live="off">08:00</span>
+    <span class="statut" id="statut" aria-live="polite">Lancez le minuteur à l'annonce de l'animateur.</span>
+    <button class="bouton bouton-minuteur" id="lancer" type="button">Démarrer</button>
+    <button class="bouton bouton-raz" id="raz" type="button" aria-label="Remettre le minuteur à zéro" hidden>&#8634;</button>
+  </div>
+</section>
+
+<section class="fin" id="fin" hidden role="alertdialog" aria-labelledby="fin-titre">
+  <h2 id="fin-titre">Place à la plénière&nbsp;!</h2>
+  <p>Votre porte-parole présente vos règles en 1 minute. Préparez-vous à écouter et à améliorer celles des autres groupes.</p>
+  <button class="bouton" id="fermer-fin" type="button">Fermer</button>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---- Les cinq thèmes : modifiables ici ---- */
+  var THEMES = [
+    {
+      titre: "L'écoute et le respect",
+      sous: "La parole, le désaccord, le droit à l'erreur",
+      enjeu: "Pour que chacun ose s'exprimer, poser des questions et se tromper, sans crainte d'être jugé.",
+      questions: [
+        "Comment nous assurer que chacun peut prendre la parole, y compris les plus discrets ?",
+        "Comment exprimer un désaccord sans blesser ?",
+        "Qu'est-ce qui vous aiderait à oser vous tromper devant le groupe ?"
+      ]
+    },
+    {
+      titre: "L'engagement réciproque",
+      sous: "Présence, ponctualité, attentes envers le formateur",
+      enjeu: "Une charte engage tout le monde : le groupe entre lui, et le formateur envers le groupe.",
+      questions: [
+        "Que nous engageons-nous à faire en matière de présence, de ponctualité et de préparation ?",
+        "Comment réagir quand un retard ou une absence est inévitable ?",
+        "Qu'attendez-vous du formateur pour que la formation vous soit utile ?"
+      ]
+    },
+    {
+      titre: "Le numérique et l'IA",
+      sous: "Téléphones, ordinateurs, usage de l'IA",
+      enjeu: "Les outils numériques peuvent aider comme distraire. Et l'IA pose une question nouvelle : comment l'utiliser en restant transparent ?",
+      questions: [
+        "Quand les téléphones et les ordinateurs sont-ils utiles en séance, et quand gênent-ils ?",
+        "L'IA est-elle autorisée pour préparer un travail ? À quelles conditions ?",
+        "Comment signaler ce qui a été produit avec l'aide d'une IA ?"
+      ]
+    },
+    {
+      titre: "La confidentialité",
+      sous: "Ce qui est dit ici, les situations d'entreprise",
+      enjeu: "Vous allez parler de vos entreprises, de vos managers, de vos difficultés. Cette parole a besoin d'être protégée.",
+      questions: [
+        "Qu'est-ce qui doit rester dans la salle, et qu'est-ce qui peut en sortir ?",
+        "Comment évoquer une situation d'entreprise sans nommer ni exposer personne ?",
+        "Que faire si quelqu'un regrette d'avoir partagé quelque chose ?"
+      ]
+    },
+    {
+      titre: "L'entraide et la vie du groupe",
+      sous: "Coopération, communication, tensions",
+      enjeu: "Vous allez passer deux ans ensemble. La qualité du groupe dépend de ce que chacun y apporte.",
+      questions: [
+        "Comment nous entraider : cours manqués, recherche d'entreprise, travaux de groupe ?",
+        "Quel canal de communication voulons-nous entre nous, et avec quelles règles ?",
+        "Comment régler une tension dans le groupe avant qu'elle ne s'installe ?"
+      ]
+    }
+  ];
+
+  var params = new URLSearchParams(location.search);
+  var dureeMin = parseFloat(params.get("min"));
+  if (!(dureeMin > 0 && dureeMin <= 120)) dureeMin = 8;
+  var DUREE = Math.round(dureeMin * 60000);
+  var ALERTE = Math.min(2 * 60000, DUREE / 4);
+
+  var CLE = "charte-" + location.pathname;
+  function lire(k) { try { return localStorage.getItem(CLE + k); } catch (e) { return null; } }
+  function ecrire(k, v) { try { localStorage.setItem(CLE + k, v); } catch (e) {} }
+  function effacer(k) { try { localStorage.removeItem(CLE + k); } catch (e) {} }
+
+  var ecranChoix = document.getElementById("ecran-choix");
+  var ecranMission = document.getElementById("ecran-mission");
+  var carte = document.getElementById("carte-mission");
+  var minuteur = document.getElementById("minuteur");
+  var groupe = null;
+
+  /* ---- Écran de choix ---- */
+  var liste = document.getElementById("liste-themes");
+  THEMES.forEach(function (t, i) {
+    var li = document.createElement("li");
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "theme-btn";
+    b.innerHTML = '<span class="numero" aria-hidden="true">' + (i + 1) + '</span>' +
+      '<span><span class="theme-nom"></span><span class="theme-sous"></span></span>';
+    b.querySelector(".theme-nom").textContent = "Groupe " + (i + 1) + " : " + t.titre;
+    b.querySelector(".theme-sous").textContent = t.sous;
+    b.addEventListener("click", function () { ouvrir(i, true); });
+    li.appendChild(b); liste.appendChild(li);
+  });
+
+  /* ---- Écran mission ---- */
+  var champs = Array.prototype.slice.call(document.querySelectorAll("[data-regle]"));
+  function ouvrir(i, animer) {
+    groupe = i;
+    var t = THEMES[i];
+    document.getElementById("m-numero").textContent = i + 1;
+    document.getElementById("m-titre").textContent = t.titre;
+    document.getElementById("m-enjeu").textContent = t.enjeu;
+    var ul = document.getElementById("m-questions"); ul.innerHTML = "";
+    t.questions.forEach(function (q) { var li = document.createElement("li"); li.textContent = q; ul.appendChild(li); });
+    champs.forEach(function (c) { c.value = lire("g" + i + "-" + c.id) || ""; });
+    document.getElementById("confirmation").textContent = "";
+    document.title = "Groupe " + (i + 1) + " – " + t.titre;
+
+    ecranChoix.hidden = true; ecranMission.hidden = false;
+    minuteur.hidden = false; document.body.classList.add("avec-minuteur");
+    ecrire("groupe", i);
+    if (animer) {
+      carte.classList.remove("revelee"); void carte.offsetWidth; carte.classList.add("revelee");
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }
+  champs.forEach(function (c) {
+    c.addEventListener("input", function () { if (groupe !== null) ecrire("g" + groupe + "-" + c.id, c.value); });
+  });
+  document.getElementById("changer").addEventListener("click", function () {
+    groupe = null; effacer("groupe");
+    ecranMission.hidden = true; ecranChoix.hidden = false;
+    document.title = "Notre charte – Mission sous-groupe";
+    window.scrollTo({ top: 0, behavior: "auto" });
+  });
+
+  /* ---- Copier les règles ---- */
+  document.getElementById("copier").addEventListener("click", function () {
+    var conf = document.getElementById("confirmation");
+    var regles = champs.map(function (c) { return c.value.trim(); }).filter(Boolean);
+    if (!regles.length) { conf.textContent = "Rédigez au moins une règle avant de copier."; return; }
+    var texte = "Groupe " + (groupe + 1) + " : " + THEMES[groupe].titre + "\n" +
+      regles.map(function (r) { return "- " + r; }).join("\n");
+    function ok() { conf.textContent = "Règles copiées. Vous pouvez les coller dans un message."; }
+    function repli() {
+      var z = document.createElement("textarea"); z.value = texte; z.setAttribute("readonly", "");
+      z.style.position = "fixed"; z.style.opacity = "0"; document.body.appendChild(z); z.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { conf.textContent = "Copie impossible sur ce téléphone : recopiez vos règles à la main."; }
+      document.body.removeChild(z);
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(texte).then(ok, repli);
+    else repli();
+  });
+
+  /* ---- Minuteur ---- */
+  var elTemps = document.getElementById("temps");
+  var elStatut = document.getElementById("statut");
+  var elProg = document.getElementById("progression");
+  var btnLancer = document.getElementById("lancer");
+  var btnRaz = document.getElementById("raz");
+  var elFin = document.getElementById("fin");
+  var fin = null, reste = DUREE, alerteDonnee = false, finDonnee = false;
+  var boucle = null, verrou = null, audio = null;
+
+  var finMemo = parseInt(lire("fin"), 10);
+  if (finMemo && finMemo > Date.now()) fin = finMemo;
+
+  function format(ms) {
+    var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor(s / 60), r = s % 60;
+    return (m < 10 ? "0" : "") + m + ":" + (r < 10 ? "0" : "") + r;
+  }
+  function bip(nb) {
+    if (!audio) return;
+    try {
+      for (var i = 0; i < nb; i++) {
+        var o = audio.createOscillator(), g = audio.createGain(), t = audio.currentTime + i * 0.35;
+        o.frequency.value = 880; g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.35, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.28);
+        o.connect(g); g.connect(audio.destination); o.start(t); o.stop(t + 0.3);
+      }
+    } catch (e) {}
+  }
+  function vibrer(m) { try { if (navigator.vibrate) navigator.vibrate(m); } catch (e) {} }
+  function garderEcran() { try { if ("wakeLock" in navigator) navigator.wakeLock.request("screen").then(function (w) { verrou = w; }).catch(function () {}); } catch (e) {} }
+  function libererEcran() { try { if (verrou) { verrou.release(); verrou = null; } } catch (e) {} }
+
+  function afficher() {
+    var restant = fin ? fin - Date.now() : reste;
+    elTemps.textContent = format(restant);
+    elProg.style.transform = "scaleX(" + Math.max(0, Math.min(1, restant / DUREE)) + ")";
+    if (restant <= 0) {
+      minuteur.className = "minuteur fini"; elStatut.textContent = "Temps écoulé.";
+      btnLancer.hidden = true; btnRaz.hidden = false;
+      if (!finDonnee) {
+        finDonnee = true; arreter(); fin = null; reste = 0; effacer("fin");
+        elFin.hidden = false; document.getElementById("fermer-fin").focus();
+        vibrer([400, 200, 400, 200, 600]); bip(3); libererEcran();
+      }
+      return;
+    }
+    if (restant <= ALERTE) {
+      minuteur.className = "minuteur alerte";
+      elStatut.textContent = "Plus que " + Math.ceil(restant / 60000) + " min : choisissez votre porte-parole.";
+      if (!alerteDonnee && fin) { alerteDonnee = true; vibrer(250); bip(1); }
+    } else {
+      minuteur.className = "minuteur";
+      elStatut.textContent = fin ? "Débattez, puis rédigez vos règles." : (reste < DUREE ? "Minuteur en pause." : "Lancez le minuteur à l'annonce de l'animateur.");
+    }
+  }
+  function lancerBoucle() { arreter(); boucle = setInterval(afficher, 250); afficher(); }
+  function arreter() { if (boucle) { clearInterval(boucle); boucle = null; } }
+  function demarrer() {
+    try { if (!audio) audio = new (window.AudioContext || window.webkitAudioContext)(); else audio.resume(); } catch (e) {}
+    fin = Date.now() + reste; ecrire("fin", fin);
+    btnLancer.textContent = "Pause"; btnRaz.hidden = false; garderEcran(); lancerBoucle();
+  }
+  function pause() {
+    reste = Math.max(0, fin - Date.now()); fin = null; effacer("fin");
+    btnLancer.textContent = "Reprendre"; arreter(); libererEcran(); afficher();
+  }
+  function remettre() {
+    arreter(); fin = null; reste = DUREE; alerteDonnee = false; finDonnee = false; effacer("fin");
+    btnLancer.hidden = false; btnLancer.textContent = "Démarrer"; btnRaz.hidden = true;
+    elFin.hidden = true; libererEcran(); afficher();
+  }
+  btnLancer.addEventListener("click", function () { if (fin) pause(); else demarrer(); });
+  btnRaz.addEventListener("click", remettre);
+  document.getElementById("fermer-fin").addEventListener("click", function () { elFin.hidden = true; });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && fin) { garderEcran(); afficher(); } });
+
+  /* ---- Démarrage : ?groupe=3 ouvre directement le thème 3 ---- */
+  var g = parseInt(params.get("groupe"), 10);
+  var gMemo = parseInt(lire("groupe"), 10);
+  if (g >= 1 && g <= THEMES.length) {
+    ouvrir(g - 1, false);
+    document.getElementById("changer").hidden = true;
+  } else if (gMemo >= 0 && gMemo < THEMES.length) {
+    ouvrir(gMemo, false);
+  }
+  if (fin) {
+    btnLancer.textContent = "Pause"; btnRaz.hidden = false;
+    if (fin - Date.now() <= ALERTE) alerteDonnee = true;
+    lancerBoucle();
+  } else { afficher(); }
+})();
+</script>
+</body>
+</html>
